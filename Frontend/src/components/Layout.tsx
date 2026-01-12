@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../store/AuthContext';
@@ -49,164 +48,203 @@ export const Navbar = () => {
 
   const isMenuActive = location.pathname === '/menu';
 
+  // return (
+  //   <header className="w-full flex flex-col z-50">
+  //     <div className="bg-tlj-cream py-4 border-b border-tlj-green/5">
+  //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  //         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+  //           <Link to="/" className="flex-shrink-0 group">
+  //              <div className="flex flex-col items-center">
+  //                 <div className="bg-white p-2 rounded-full border-2 border-tlj-green mb-1 group-hover:shadow-md transition-all">
+  //                     <span className="font-script text-tlj-green text-2xl px-1">Pane e</span>
+  //                 </div>
+  //                 <h1 className="font-serif text-xl font-bold text-tlj-green tracking-tight leading-none uppercase">
+  //                   AMORE
+  //                 </h1>
+  //              </div>
+  //           </Link>
+  
   return (
-    <header className="w-full flex flex-col z-50">
-      <div className="bg-tlj-cream py-4 border-b border-tlj-green/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <Link to="/" className="flex-shrink-0 group">
-               <div className="flex flex-col items-center">
-                  <div className="bg-white p-2 rounded-full border-2 border-tlj-green mb-1 group-hover:shadow-md transition-all">
-                      <span className="font-script text-tlj-green text-2xl px-1">Pane e</span>
-                  </div>
-                  <h1 className="font-serif text-xl font-bold text-tlj-green tracking-tight leading-none uppercase">
-                    AMORE
-                  </h1>
-               </div>
-            </Link>
-            
-            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-2xl flex-1 px-0 lg:px-12">
-               <form onSubmit={handleProductSearch} className="relative w-full">
-                 <input 
+      <header className="w-full flex flex-col z-50">
+        {/* Giảm py-8 xuống py-5 để Header gọn và tinh tế hơn */}
+        <div className="bg-tlj-cream py-5 border-b border-tlj-green/10">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              
+              {/* 1. LOGO - Giữ tỉ lệ h-28 đẹp mắt */}
+              <div className="md:col-span-3 flex justify-center md:justify-start">
+                <Link to="/" className="flex-shrink-0 transition-transform hover:scale-105 duration-300">
+                  <img
+                    src="/logo2.png" 
+                    alt="Pane e Amore Logo"
+                    className="h-24 md:h-28 w-auto object-contain contrast-110"
+                  />
+                </Link>
+              </div>
+
+              {/* 2. SEARCH FORMS - Thu gọn py-3.5 xuống py-2.5 để header nhor lại */}
+              <div className="md:col-span-6 flex flex-col sm:flex-row gap-4 w-full">
+                <form onSubmit={handleProductSearch} className="relative flex-1 group">
+                  <input 
                     type="text" 
                     placeholder="Find your cake..." 
                     value={productSearch}
                     onChange={(e) => setProductSearch(e.target.value)}
-                    className="w-full bg-white border border-tlj-green/20 rounded-full py-2.5 pl-5 pr-10 text-sm focus:outline-none focus:border-tlj-green focus:ring-1 focus:ring-tlj-green transition-all shadow-sm text-tlj-charcoal"
-                 />
-                 <button type="submit" className="absolute right-3 top-1/2 transform -translate-y-1/2 text-tlj-green/60 hover:text-tlj-green">
-                    <Search size={18} />
-                 </button>
-               </form>
+                    className="w-full bg-white border border-tlj-green/20 rounded-full py-2.5 pl-6 pr-12 text-base focus:outline-none focus:border-tlj-green focus:ring-2 focus:ring-tlj-green/20 transition-all shadow-sm text-tlj-charcoal"
+                  />
+                  <button type="submit" className="absolute right-4 top-1/2 transform -translate-y-1/2 text-tlj-green/60 group-hover:text-tlj-green">
+                    <Search size={20} />
+                  </button>
+                </form>
 
-               <form onSubmit={handleOrderSearch} className="relative w-full">
-                 <input 
+                <form onSubmit={handleOrderSearch} className="relative flex-1 group">
+                  <input 
                     type="text" 
                     placeholder="Track Order ID" 
                     value={orderSearch}
                     onChange={(e) => setOrderSearch(e.target.value)}
-                    className="w-full bg-white border border-tlj-green/20 rounded-full py-2.5 pl-5 pr-10 text-sm focus:outline-none focus:border-tlj-green focus:ring-1 focus:ring-tlj-green transition-all shadow-sm text-tlj-charcoal"
-                 />
-                 <button type="submit" className="absolute right-3 top-1/2 transform -translate-y-1/2 text-tlj-green/60 hover:text-tlj-green">
-                    <Search size={18} />
-                 </button>
-               </form>
-            </div>
+                    className="w-full bg-white border border-tlj-green/20 rounded-full py-2.5 pl-6 pr-12 text-base focus:outline-none focus:border-tlj-green focus:ring-2 focus:ring-tlj-green/20 transition-all shadow-sm text-tlj-charcoal"
+                  />
+                  <button type="submit" className="absolute right-4 top-1/2 transform -translate-y-1/2 text-tlj-green/60 group-hover:text-tlj-green">
+                    <Search size={20} />
+                  </button>
+                </form>
+              </div>
 
-            <div className="flex items-center gap-6 flex-shrink-0">
-              {!currentUser ? (
-                <div className="flex items-center gap-6">
-                  <Link to="/login" className="flex items-center gap-2 text-sm font-medium text-tlj-charcoal hover:text-tlj-green transition-colors">
-                    <UserIcon size={18} /> Sign in
-                  </Link>
-                  <Link to="/signup" className="flex items-center gap-2 text-sm font-medium text-tlj-charcoal hover:text-tlj-green transition-colors">
-                    <UserPlus size={18} /> Sign up
-                  </Link>
-                </div>
-              ) : (
-                <div className="flex items-center gap-4">
-                   <div className="text-right hidden sm:block">
-                     <p className="text-xs text-gray-500">Welcome,</p>
-                     <p className="text-sm font-bold text-tlj-green">{currentUser.fullName}</p>
-                   </div>
-                   <button onClick={handleLogout} title="Logout" className="text-gray-400 hover:text-red-500">
-                     <LogOut size={20} />
-                   </button>
-                </div>
-              )}
+              {/* 3. USER ACTIONS - Thêm whitespace-nowrap để Sign in/Sign up không bị nhảy dòng */}
+              <div className="md:col-span-3 flex items-center justify-center md:justify-end gap-6 whitespace-nowrap">
+                {!currentUser ? (
+                  <div className="flex items-center gap-6">
+                    <Link to="/login" className="flex items-center gap-2 text-lg font-semibold text-tlj-charcoal hover:text-tlj-green transition-all whitespace-nowrap">
+                      <UserIcon size={20} /> Sign in
+                    </Link>
+                    <Link to="/signup" className="flex items-center gap-2 text-lg font-semibold text-tlj-charcoal hover:text-tlj-green transition-all whitespace-nowrap">
+                      <UserPlus size={20} /> Sign up
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-4">
+                    <div className="text-right hidden sm:block border-r border-gray-200 pr-4">
+                      <p className="text-[10px] text-gray-400 uppercase tracking-widest">Logged in</p>
+                      <p className="text-base font-bold text-tlj-green">{currentUser.fullName}</p>
+                    </div>
+                    <button onClick={handleLogout} title="Logout" className="text-gray-400 hover:text-red-500 transition-all">
+                      <LogOut size={22} />
+                    </button>
+                  </div>
+                )}
 
-              {(currentUser?.role === Role.CUSTOMER || !currentUser) && (
-                <button 
-                  onClick={() => setIsCartOpen(true)}
-                  className="relative p-2 bg-white rounded-full border border-tlj-green/20 text-tlj-green hover:bg-tlj-green hover:text-white transition-all shadow-sm group"
-                >
-                  <ShoppingBag size={20} />
-                  {cart.length > 0 && (
-                    <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-[10px] font-bold text-white bg-red-500 rounded-full border-2 border-tlj-cream">
-                      {cart.reduce((a, b) => a + b.quantity, 0)}
-                    </span>
-                  )}
-                </button>
-              )}
+                {/* GIỎ HÀNG */}
+                {(currentUser?.role === Role.CUSTOMER || !currentUser) && (
+                  <button 
+                    onClick={() => setIsCartOpen(true)}
+                    className="relative p-2.5 bg-white rounded-full border border-tlj-green/20 text-tlj-green hover:bg-tlj-green hover:text-white transition-all shadow-sm group flex-shrink-0"
+                  >
+                    <ShoppingBag size={22} />
+                    {cart.length > 0 && (
+                      <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-[10px] font-bold text-white bg-red-500 rounded-full border-2 border-tlj-cream">
+                        {cart.reduce((a, b) => a + b.quantity, 0)}
+                      </span>
+                    )}
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <nav className={`bg-tlj-green text-white shadow-md sticky top-0 z-40 transition-all duration-300 ${scrolled ? 'py-2' : 'py-3'}`}>
-         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between md:justify-center">
-            <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(true)}>
-              <MenuIcon size={24} />
-            </button>
+      <nav className={`bg-tlj-green text-white shadow-md sticky top-0 z-40 transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'}`}>
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between md:justify-center">
+          {/* Nút Mobile Menu */}
+          <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(true)}>
+            <MenuIcon size={28} />
+          </button>
 
-            <div className="hidden md:flex items-center space-x-12">
-              <Link to="/" className={`uppercase text-sm tracking-widest ${isActive('/')}`}>Home</Link>
+          {/* MENU DESKTOP - Đã tinh chỉnh khoảng cách và kích thước */}
+          <div className="hidden md:flex items-center space-x-20">
+            
+            <Link to="/" className={`uppercase text-lg font-medium tracking-[0.2em] transition-all duration-300 hover:scale-105 ${isActive('/')}`}>
+              Home
+            </Link>
+            
+            <div className="relative group">
+              <Link to="/menu" className={`flex items-center gap-2 uppercase text-lg font-medium tracking-[0.2em] transition-all duration-300 hover:scale-105 ${isMenuActive ? 'text-white border-b-2 border-white' : 'text-white/80 hover:text-white'}`}>
+                Menu <ChevronDown size={18} className={`transition-transform duration-300 group-hover:rotate-180`} />
+              </Link>
               
-              <div className="relative group">
-                <Link to="/menu" className={`flex items-center gap-1 uppercase text-sm tracking-widest ${isMenuActive ? 'text-white font-bold' : 'text-white/80 hover:text-white'} transition-colors py-2`}>
-                  Menu <ChevronDown size={14} className="mt-[-2px]" />
-                </Link>
-                
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-0 pt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                   <div className="bg-white rounded-lg shadow-xl overflow-hidden border border-gray-100 flex flex-col">
-                      <Link to="/menu?category=Bread" className="px-6 py-3 text-sm text-tlj-charcoal hover:bg-tlj-cream hover:text-tlj-green hover:font-bold transition-colors text-left font-serif border-b border-gray-50">Bread</Link>
-                      <Link to="/menu?category=Cakes" className="px-6 py-3 text-sm text-tlj-charcoal hover:bg-tlj-cream hover:text-tlj-green hover:font-bold transition-colors text-left font-serif border-b border-gray-50">Cakes</Link>
-                      <Link to="/menu?category=Coffee" className="px-6 py-3 text-sm text-tlj-charcoal hover:bg-tlj-cream hover:text-tlj-green hover:font-bold transition-colors text-left font-serif border-b border-gray-50">Coffee</Link>
-                      <Link to="/menu?category=Milk" className="px-6 py-3 text-sm text-tlj-charcoal hover:bg-tlj-cream hover:text-tlj-green hover:font-bold transition-colors text-left font-serif">Milk</Link>
-                   </div>
+              {/* Dropdown Menu - Tăng kích thước để tương xứng với Menu chính */}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-0 pt-4 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col p-2">
+                  {['Bread', 'Cakes', 'Coffee', 'Milk'].map((cat) => (
+                    <Link 
+                      key={cat}
+                      to={`/menu?category=${cat}`} 
+                      className="px-6 py-3.5 text-base text-tlj-charcoal hover:bg-tlj-cream hover:text-tlj-green rounded-lg transition-all font-serif border-b border-gray-50 last:border-0"
+                    >
+                      {cat}
+                    </Link>
+                  ))}
                 </div>
               </div>
-
-              <Link to="/about" className={`uppercase text-sm tracking-widest ${isActive('/about')}`}>About Us</Link>
-              <Link to="/contact" className={`uppercase text-sm tracking-widest ${isActive('/contact')}`}>Contact</Link>
-              
-              {currentUser?.role === Role.CUSTOMER && (
-                 <Link to="/history" className={`uppercase text-sm tracking-widest ${isActive('/history')}`}>Orders</Link>
-              )}
-              {currentUser?.role === Role.EMPLOYEE && (
-                <Link to="/employee" className={`uppercase text-sm tracking-widest ${isActive('/employee')}`}>Workspace</Link>
-              )}
-              {currentUser?.role === Role.MANAGER && (
-                <Link to="/admin" className={`uppercase text-sm tracking-widest ${isActive('/admin')}`}>Admin</Link>
-              )}
             </div>
-             <div className="md:hidden w-6"></div> 
-         </div>
+
+            <Link to="/about" className={`uppercase text-lg font-medium tracking-[0.2em] transition-all duration-300 hover:scale-105 ${isActive('/about')}`}>
+              About Us
+            </Link>
+
+            <Link to="/contact" className={`uppercase text-lg font-medium tracking-[0.2em] transition-all duration-300 hover:scale-105 ${isActive('/contact')}`}>
+              Contact
+            </Link>
+            
+            {/* Các nút chức năng đặc biệt (Admin/Employee) */}
+            {currentUser?.role === Role.CUSTOMER && (
+              <Link to="/history" className={`uppercase text-lg font-medium tracking-[0.2em] transition-all duration-300 hover:scale-105 ${isActive('/history')}`}>Orders</Link>
+            )}
+            {currentUser?.role === Role.EMPLOYEE && (
+              <Link to="/employee" className={`uppercase text-lg font-medium tracking-[0.2em] transition-all duration-300 hover:scale-105 ${isActive('/employee')}`}>Workspace</Link>
+            )}
+            {currentUser?.role === Role.MANAGER && (
+              <Link to="/admin" className={`uppercase text-lg font-medium tracking-[0.2em] transition-all duration-300 hover:scale-105 ${isActive('/admin')}`}>Admin</Link>
+            )}
+          </div>
+
+          <div className="md:hidden w-6"></div> 
+        </div>
       </nav>
       
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-tlj-green/95 backdrop-blur-md flex flex-col justify-center items-center text-white transition-opacity duration-300">
-           <button onClick={() => setMobileMenuOpen(false)} className="absolute top-6 right-6 p-2 text-white/80 hover:text-white">
-             <X size={32} />
-           </button>
-           <nav className="flex flex-col space-y-6 text-center w-full px-8">
-             <Link to="/" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif border-b border-white/20 pb-4 w-full block">Home</Link>
-             
-             <div className="w-full border-b border-white/20 pb-4">
-                <Link to="/menu" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif block mb-4">Menu</Link>
-                <div className="flex flex-col gap-3 text-white/70">
-                   <Link to="/menu?category=Bread" onClick={() => setMobileMenuOpen(false)} className="text-lg">Bread</Link>
-                   <Link to="/menu?category=Cakes" onClick={() => setMobileMenuOpen(false)} className="text-lg">Cakes</Link>
-                   <Link to="/menu?category=Coffee" onClick={() => setMobileMenuOpen(false)} className="text-lg">Coffee</Link>
-                   <Link to="/menu?category=Milk" onClick={() => setMobileMenuOpen(false)} className="text-lg">Milk</Link>
-                </div>
-             </div>
+          <button onClick={() => setMobileMenuOpen(false)} className="absolute top-6 right-6 p-2 text-white/80 hover:text-white">
+            <X size={32} />
+          </button>
+          <nav className="flex flex-col space-y-6 text-center w-full px-8">
+            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif border-b border-white/20 pb-4 w-full block">Home</Link>
+            
+            <div className="w-full border-b border-white/20 pb-4">
+              <Link to="/menu" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif block mb-4">Menu</Link>
+              <div className="flex flex-col gap-3 text-white/70">
+                <Link to="/menu?category=Bread" onClick={() => setMobileMenuOpen(false)} className="text-lg">Bread</Link>
+                <Link to="/menu?category=Cakes" onClick={() => setMobileMenuOpen(false)} className="text-lg">Cakes</Link>
+                <Link to="/menu?category=Coffee" onClick={() => setMobileMenuOpen(false)} className="text-lg">Coffee</Link>
+                <Link to="/menu?category=Milk" onClick={() => setMobileMenuOpen(false)} className="text-lg">Milk</Link>
+              </div>
+            </div>
 
-             <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif border-b border-white/20 pb-4 w-full block">About Us</Link>
-             <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif border-b border-white/20 pb-4 w-full block">Contact</Link>
-             
-             {currentUser ? (
-               <>
-                 {currentUser.role === Role.CUSTOMER && <Link to="/history" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif border-b border-white/20 pb-4 w-full block">My Orders</Link>}
-                 <button onClick={() => { handleLogout(); setMobileMenuOpen(false); }} className="text-xl font-sans uppercase tracking-widest mt-8 border px-8 py-2 border-white/30">Logout</button>
-               </>
-             ) : (
-               <div className="flex flex-col gap-4">
-                 <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif">Sign In</Link>
-                 <Link to="/signup" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif">Create Account</Link>
-               </div>
-             )}
-           </nav>
+            <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif border-b border-white/20 pb-4 w-full block">About Us</Link>
+            <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif border-b border-white/20 pb-4 w-full block">Contact</Link>
+            
+            {currentUser ? (
+              <>
+                {currentUser.role === Role.CUSTOMER && <Link to="/history" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif border-b border-white/20 pb-4 w-full block">My Orders</Link>}
+                <button onClick={() => { handleLogout(); setMobileMenuOpen(false); }} className="text-xl font-sans uppercase tracking-widest mt-8 border px-8 py-2 border-white/30">Logout</button>
+              </>
+            ) : (
+              <div className="flex flex-col gap-4">
+                <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif">Sign In</Link>
+                <Link to="/signup" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif">Create Account</Link>
+              </div>
+            )}
+          </nav>
         </div>
       )}
     </header>
@@ -303,61 +341,148 @@ const CartDrawer = () => {
   );
 };
 
-export const Footer = () => (
-  <footer className="bg-tlj-green text-white pt-16 pb-8 border-t border-white/10">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 mb-16">
-        <div className="md:col-span-4 lg:col-span-4 space-y-8">
-           <Link to="/" className="inline-block group">
-               <div className="flex flex-col">
-                  <h2 className="font-serif text-3xl font-bold tracking-tight text-white group-hover:text-tlj-cream transition-colors">PANE E AMORE</h2>
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-tlj-cream mt-1">Artisan Baking Since 2009</p>
-               </div>
-           </Link>
-           <div className="flex gap-4">
-              <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white hover:text-tlj-green transition-all"><Facebook size={20} /></a>
-              <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white hover:text-tlj-green transition-all"><Instagram size={20} /></a>
-              <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white hover:text-tlj-green transition-all"><Linkedin size={20} /></a>
-           </div>
+// export const Footer = () => (
+//   <footer className="bg-tlj-green text-white pt-16 pb-8 border-t border-white/10">
+//     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 mb-16">
+//         <div className="md:col-span-4 lg:col-span-4 space-y-8">
+//            <Link to="/" className="inline-block group">
+//                <div className="flex flex-col">
+//                   <h2 className="font-serif text-3xl font-bold tracking-tight text-white group-hover:text-tlj-cream transition-colors">PANE E AMORE</h2>
+//                   <p className="text-[10px] tracking-[0.2em] uppercase text-tlj-cream mt-1">Artisan Baking Since 2009</p>
+//                </div>
+//            </Link>
+//            <div className="flex gap-4">
+//               <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white hover:text-tlj-green transition-all"><Facebook size={20} /></a>
+//               <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white hover:text-tlj-green transition-all"><Instagram size={20} /></a>
+//               <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white hover:text-tlj-green transition-all"><Linkedin size={20} /></a>
+//            </div>
            
-           <div className="text-xs text-white/50 font-light space-y-1">
-             <p>No 1 Dai Co Viet, Hai Ba Trung, Ha Noi</p>
-             <p>+84 123456789</p>
+//            <div className="text-xs text-white/50 font-light space-y-1">
+//              <p>No 1 Dai Co Viet, Hai Ba Trung, Ha Noi</p>
+//              <p>+84 123456789</p>
+//            </div>
+//         </div>
+
+
+
+//         <div className="md:col-span-2 lg:col-span-2">
+//           <h4 className="font-sans font-bold text-tlj-cream uppercase tracking-[0.15em] text-sm mb-6">Bakery</h4>
+//           <ul className="space-y-4 text-base text-white/80 font-light">
+//              <li><Link to="/menu?category=Bread" className="hover:text-white hover:translate-x-1 transition-all inline-block">Bread</Link></li>
+//              <li><Link to="/menu?category=Cakes" className="hover:text-white hover:translate-x-1 transition-all inline-block">Cakes</Link></li>
+//           </ul>
+//         </div>
+
+//         <div className="md:col-span-2 lg:col-span-2">
+//           <h4 className="font-sans font-bold text-tlj-cream uppercase tracking-[0.15em] text-sm mb-6">Beverages</h4>
+//           <ul className="space-y-4 text-base text-white/80 font-light">
+//              <li><Link to="/menu?category=Coffee" className="hover:text-white hover:translate-x-1 transition-all inline-block">Coffee</Link></li>
+//              <li><Link to="/menu?category=Milk" className="hover:text-white hover:translate-x-1 transition-all inline-block">Milk</Link></li>
+//           </ul>
+//         </div>
+
+//         <div className="md:col-span-4 lg:col-span-4">
+//           <h4 className="font-sans font-bold text-tlj-cream uppercase tracking-[0.15em] text-sm mb-6">Company</h4>
+//           <ul className="space-y-4 text-base text-white/80 font-light">
+//              <li><Link to="/" className="hover:text-white hover:translate-x-1 transition-all inline-block">Home</Link></li>
+//              <li><Link to="/about" className="hover:text-white hover:translate-x-1 transition-all inline-block">Our Story</Link></li>
+//              <li><Link to="/contact" className="hover:text-white hover:translate-x-1 transition-all inline-block">Contact Us</Link></li>
+//              <li><Link to="/faq" className="hover:text-white hover:translate-x-1 transition-all inline-block">FAQ</Link></li>
+//           </ul>
+//         </div>
+//       </div>
+
+//       <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-white/40 uppercase tracking-wider">
+//         <p>© 2024 Pane e Amore. All rights reserved.</p>
+//         <div className="flex gap-6">
+//           <Link to="/policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+//           <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+//           <Link to="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
+//         </div>
+//       </div>
+//     </div>
+//   </footer>
+// );
+
+export const Footer = () => (
+  <footer className="bg-tlj-green text-white pt-16 pb-8 border-t border-white/10 mt-20">
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+      
+      {/* GRID 5 CỘT: Dàn đều tất cả nội dung trên một hàng ngang */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12 items-start">
+        
+        {/* CỘT 1: BRAND - Logo to và Social gọn gàng */}
+        <div className="space-y-6">
+           <Link to="/" className="inline-block group">
+               <img 
+                 src="/logo.png" 
+                 alt="Logo" 
+                 className="h-36 w-auto object-contain brightness-0 invert mb-2 transition-transform group-hover:scale-105" 
+               />
+               <p className="text-xs tracking-[0.3em] uppercase text-tlj-cream font-bold leading-tight">
+                 Artisan Baking <br/> Since 2009
+               </p>
+           </Link>
+           <div className="flex gap-3">
+              <a href="#" className="bg-white/10 p-2.5 rounded-full hover:bg-white hover:text-tlj-green transition-all"><Facebook size={20} /></a>
+              <a href="#" className="bg-white/10 p-2.5 rounded-full hover:bg-white hover:text-tlj-green transition-all"><Instagram size={20} /></a>
+              <a href="#" className="bg-white/10 p-2.5 rounded-full hover:bg-white hover:text-tlj-green transition-all"><Linkedin size={20} /></a>
            </div>
         </div>
 
-        <div className="md:col-span-2 lg:col-span-2">
-          <h4 className="font-sans font-bold text-tlj-cream uppercase tracking-[0.15em] text-sm mb-6">Bakery</h4>
-          <ul className="space-y-4 text-base text-white/80 font-light">
-             <li><Link to="/menu?category=Bread" className="hover:text-white hover:translate-x-1 transition-all inline-block">Bread</Link></li>
-             <li><Link to="/menu?category=Cakes" className="hover:text-white hover:translate-x-1 transition-all inline-block">Cakes</Link></li>
+        {/* CỘT 2: BAKERY - Giữ nguyên */}
+        <div>
+          <h4 className="font-serif text-2xl font-bold text-tlj-cream uppercase tracking-widest mb-6 border-b border-white/10 pb-2 inline-block">Bakery</h4>
+          <ul className="space-y-3 text-lg text-white/80 font-light">
+             <li><Link to="/menu?category=Bread" className="hover:text-white hover:pl-1 transition-all inline-block">Bread</Link></li>
+             <li><Link to="/menu?category=Cakes" className="hover:text-white hover:pl-1 transition-all inline-block">Cakes</Link></li>
           </ul>
         </div>
 
-        <div className="md:col-span-2 lg:col-span-2">
-          <h4 className="font-sans font-bold text-tlj-cream uppercase tracking-[0.15em] text-sm mb-6">Beverages</h4>
-          <ul className="space-y-4 text-base text-white/80 font-light">
-             <li><Link to="/menu?category=Coffee" className="hover:text-white hover:translate-x-1 transition-all inline-block">Coffee</Link></li>
-             <li><Link to="/menu?category=Milk" className="hover:text-white hover:translate-x-1 transition-all inline-block">Milk</Link></li>
+        {/* CỘT 3: DRINKS - Giữ nguyên */}
+        <div>
+          <h4 className="font-serif text-2xl font-bold text-tlj-cream uppercase tracking-widest mb-6 border-b border-white/10 pb-2 inline-block">Drinks</h4>
+          <ul className="space-y-3 text-lg text-white/80 font-light">
+             <li><Link to="/menu?category=Coffee" className="hover:text-white hover:pl-1 transition-all inline-block">Coffee</Link></li>
+             <li><Link to="/menu?category=Milk" className="hover:text-white hover:pl-1 transition-all inline-block">Milk</Link></li>
           </ul>
         </div>
 
-        <div className="md:col-span-4 lg:col-span-4">
-          <h4 className="font-sans font-bold text-tlj-cream uppercase tracking-[0.15em] text-sm mb-6">Company</h4>
-          <ul className="space-y-4 text-base text-white/80 font-light">
-             <li><Link to="/" className="hover:text-white hover:translate-x-1 transition-all inline-block">Home</Link></li>
-             <li><Link to="/about" className="hover:text-white hover:translate-x-1 transition-all inline-block">Our Story</Link></li>
-             <li><Link to="/contact" className="hover:text-white hover:translate-x-1 transition-all inline-block">Contact Us</Link></li>
-             <li><Link to="/faq" className="hover:text-white hover:translate-x-1 transition-all inline-block">FAQ</Link></li>
+        {/* CỘT 4: COMPANY - Giữ nguyên */}
+        <div>
+          <h4 className="font-serif text-2xl font-bold text-tlj-cream uppercase tracking-widest mb-6 border-b border-white/10 pb-2 inline-block">Explore</h4>
+          <ul className="space-y-3 text-lg text-white/80 font-light">
+             <li><Link to="/" className="hover:text-white transition-all">Home</Link></li>
+             <li><Link to="/about" className="hover:text-white transition-all">Our Story</Link></li>
+             <li><Link to="/contact" className="hover:text-white transition-all">Contact</Link></li>
+             <li><Link to="/faq" className="hover:text-white transition-all">FAQ</Link></li>
           </ul>
         </div>
+
+        {/* CỘT 5: CONTACT - Chuyển sang đây để dàn hàng ngang cân bằng */}
+        <div className="space-y-0">
+          <h4 className="font-serif text-2xl font-bold text-tlj-cream uppercase tracking-widest mb-6 border-b border-white/10 pb-2 inline-block">Visit Us</h4>
+          <div className="space-y-0 text-base text-white/70 font-light leading-relaxed">
+             <p className="hover:text-white transition-colors">
+                ADDRESS: <br/> 
+                No 1 Dai Co Viet, <br/> 
+                Hai Ba Trung, Ha Noi
+             </p>
+             <p className="text-white font-small text-lg pt-2 border-t border-white/5">
+                +84 123 456 789
+             </p>
+          </div>
+        </div>
+
       </div>
 
-      <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-white/40 uppercase tracking-wider">
-        <p>© 2024 Pane e Amore. All rights reserved.</p>
-        <div className="flex gap-6">
-          <Link to="/policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-          <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+      {/* BOTTOM BAR: Thu hẹp padding và font to rõ hơn */}
+      <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[12px] text-white/40 uppercase tracking-[0.2em] font-medium">
+        <p>© 2026 Pane e Amore Bakery. Artisan Excellence.</p>
+        <div className="flex gap-8">
+          <Link to="/policy" className="hover:text-white transition-colors">Privacy</Link>
+          <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
           <Link to="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
         </div>
       </div>

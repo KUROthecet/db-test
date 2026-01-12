@@ -1,8 +1,8 @@
-
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-require('dotenv').config();
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -70,5 +70,6 @@ app.use((err, req, res, next) => {
 // --- Start Server ---
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on port ${PORT}`);
-    console.log(`🔗 Connected to Database: ${process.env.DB_NAME} @ ${process.env.DB_HOST}`);
+    // Sửa DB_NAME thành DB_DATABASE cho khớp với file .env
+    console.log(`🔗 Connected to Database: ${process.env.DB_DATABASE} @ ${process.env.DB_HOST}`);
 });
